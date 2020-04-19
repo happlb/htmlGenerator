@@ -57,9 +57,9 @@ def create_elements(i):
                 0:create_h(),
                 1:create_p(),
                 2:create_img(),
-                3:create_img(),
-                4:create_img(),
-                5:create_img(),
+                3:create_table(),
+                4:create_table(),
+                5:create_table(),
              }
     return switcher.get(i,"""""")
 
@@ -89,6 +89,41 @@ def create_img():
 def getImg_src():
     #this will have to be randomized and then mark which image was taken to prevent repeats
     return "kittySmalls.JPG"
+
+def create_table():
+    table = """
+            <table>""" + create_table_tr() + """
+            </table>"""
+    return table
+
+def create_table_tr():
+    numOftr = random.randint(1, 20)
+    numOfth = random.randint(1, 10)
+    tableTr = """
+               <tr>""" + create_table_th(numOfth) + """
+               </tr>"""
+    for x in range(0, numOftr):
+        tableTr += """
+               <tr>""" + create_table_td(numOfth) + """
+               </tr>"""
+    
+    return tableTr
+
+
+def create_table_th(numOfth):
+    tableTh = """"""
+    for x in range(0, numOfth):
+        tableTh += """
+                   <th>""" + create_content() + """</th>"""
+    return tableTh
+
+def create_table_td(numOfth):
+    tableTd = """"""
+    for x in range(0, numOfth):
+        tableTd += """
+                   <td>""" + create_content() + """</td>"""
+    return tableTd
+
 
 def create_footer_lines():
     footer = """    </div>
