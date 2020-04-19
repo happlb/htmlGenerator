@@ -27,11 +27,27 @@ def create_header_lines():
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="script.js"></script>
     <title>twitterBot</title>
 </head>
 <body class = "mainBody">
     <div class="myWrapper">
+        <div id="generalInfo">
+            <h1>
+                Welcome To My TacoBell HTML Generating TwitterBot!
+            </h1>
+            <p>
+                This bot was made both as a personal project to familiarize myself with the twitter api
+                and out of a deep irrational love for TacoBell. I'm a cat mom, deadhead, and a computer engineer.
+                This project was developed using python with the tweepy library  and using tools such as Git and Visual Studio.
+                The intended purpose of this bot was host a weekly CSS competition through twitter by providing pseudorandom
+                generated HTML files. The HTML file is not to be edited and only the CSS file (style.css) is to be submitted.
+            </p>
+            <a href="https://www.tacobell.com/">Visit The Offical TacoBell Website </a>
+            <a href="myTest.HTML" download>Download the HTML File</a>
+            <a href="http://www.csszengarden.com/">This bot was inspired by CSS Zen Garden</a>
+            <a href="https://github.com/happlb/htmlGenerator">View my GitHub for this Project </a>
+            <a href="https://www.linkedin.com/in/lucy-happ-647684153">View my Linkdien</a>
+        </div>
 """
     return header
    
@@ -58,10 +74,10 @@ def create_elements(i):
                 1:create_p(),
                 2:create_img(),
                 3:create_table(),
-                4:create_table(),
-                5:create_table(),
+                4:create_ul(),
+                5:create_ol(),
              }
-    return switcher.get(i,"""""")
+    return switcher.get(i,"")
 
 def create_h():
     headingValue = str(random.randint(1, 4))
@@ -124,6 +140,27 @@ def create_table_td(numOfth):
                    <td>""" + create_content() + """</td>"""
     return tableTd
 
+
+def create_ul():
+    ul = """
+            <ul>""" + create_li() + """
+            </ul>"""
+    return ul
+
+def create_ol():
+    ol = """
+            <ol>""" + create_li() + """
+            </ol>"""
+    return ol
+
+def create_li():
+    listItem=""
+    numOfLi = random.randint(1, 20)
+    for x in range(0, numOfLi):
+        listItem += """
+               <li>""" + create_content() + """</li>"""
+    
+    return listItem
 
 def create_footer_lines():
     footer = """    </div>
