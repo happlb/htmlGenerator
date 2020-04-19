@@ -1,5 +1,8 @@
 import random 
 
+usedImgs = [] 
+
+
 def main():
     """
     executes all methods in order
@@ -28,53 +31,70 @@ def create_header_lines():
     <title>twitterBot</title>
 </head>
 <body class = "mainBody">
-    <div class="myWrapper">"""
-    print(header);
+    <div class="myWrapper">
+"""
     return header
    
 
 def create_body_lines():
     body = """"""
-    numOfDivs = random.randint(1, 10)
+    numOfDivs = random.randint(1, 20)
     for x in range(0, numOfDivs):
-        body+= create_div() 
-    print(body)
+        body+= create_div(x) 
     return body
 
-def create_div():
-    div="<div>"
-    numOfElements = random.randint(1, 5)
-    for x in range(0, numOfElements):
-        div+=create_elements(random.randint(0, 5))
-    div+="</div>"
-    print(div)
+def create_div(i):
+    myDivid = """ id = "myDiv""" + str(i)
+    div="""        <div"""+myDivid +"""" >"""
+    div+=create_elements(random.randint(0, 5))
+    div+="""
+        </div>
+"""
     return (div)
 
 def create_elements(i):
     switcher={
-                0:create_heading(),
-                1:create_heading(),
-                2:create_heading(),
-                3:create_heading(),
-                4:create_heading(),
-                5:create_heading(),
+                0:create_h(),
+                1:create_p(),
+                2:create_img(),
+                3:create_img(),
+                4:create_img(),
+                5:create_img(),
              }
     return switcher.get(i,"""""")
 
-def create_heading():
+def create_h():
     headingValue = str(random.randint(1, 4))
-    heading = "<h" + headingValue+">" + create_content() + "</h" + headingValue+">"
+    heading = """
+            <h""" + headingValue+""">
+                """ + create_content() + """
+            </h""" + headingValue+">"
     return heading
 
 def create_content():
     return "oh hey im some content"
+
+def create_p():
+    p = """
+            <p>
+                """ + create_content() + """
+            </p>"""
+    return p
+
+def create_img():
+    img = """
+            <img src=" """ + getImg_src() + """" >"""
+    return img
+
+def getImg_src():
+    #this will have to be randomized and then mark which image was taken to prevent repeats
+    return "kittySmalls.JPG"
 
 def create_footer_lines():
     footer = """    </div>
 </body>
 </html>
     """
-    print(footer);
     return footer
 
 
