@@ -1,6 +1,7 @@
 import random 
 
 usedImgs = [] 
+num_lines = sum(1 for line in open('deadsongs.txt'))
 
 
 def main():
@@ -39,7 +40,7 @@ def create_header_lines():
                 This bot was made both as a personal project to familiarize myself with the twitter api
                 and out of a deep irrational love for TacoBell. I'm a cat mom, deadhead, and a computer engineer.
                 This project was developed using python with the tweepy library  and using tools such as Git and Visual Studio.
-                The intended purpose of this bot was host a weekly CSS competition through twitter by providing pseudorandom
+                The intended purpose of this bot was host a monthly CSS competition through twitter by providing pseudorandom
                 generated HTML files. The HTML file is not to be edited and only the CSS file (style.css) is to be submitted.
             </p>
             <a href="https://www.tacobell.com/">Visit The Offical TacoBell Website </a>
@@ -88,7 +89,10 @@ def create_h():
     return heading
 
 def create_content():
-    return "oh hey im some content"
+    line_to_grab = random.randint(0, num_lines-1)
+    songFile = open("deadsongs.txt", "r")
+    line = songFile.readlines()[line_to_grab].rstrip() 
+    return line
 
 def create_p():
     p = """
