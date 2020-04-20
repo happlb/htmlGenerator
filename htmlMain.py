@@ -5,7 +5,6 @@ from zipfile import ZipFile
 
 usedImgs = [] 
 num_lines = sum(1 for line in open('deadsongs.txt'))
-zipObj = ZipFile('deadTwitterBot.zip', 'w')
 
 def main():
     """
@@ -18,7 +17,8 @@ def main():
     #filelist = [ f for f in os.listdir(mydir) if f.endswith(".jpg") ]
     #for f in filelist:
      #   os.remove(os.path.join(mydir, f))
-    #delete_from_zip_file('deadTwitterBot.zip', pattern='.*.jpg') 
+    #delete_from_zip_file('deadTwitterBot.zip', pattern='.*.jpg')
+    zipObj = ZipFile('deadTwitterBot.zip', 'w') 
     Html_file= open("myTest.html","w+")
     Html_file.write(create_header_lines() + create_body_lines() + create_footer_lines())
     zipObj.write("myTest.html")
