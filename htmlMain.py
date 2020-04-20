@@ -22,6 +22,12 @@ def main():
     Html_file= open("myTest.html","w+")
     Html_file.write(create_header_lines() + create_body_lines() + create_footer_lines())
     zipObj.write("myTest.html")
+    zipObj.write("style.css")
+
+    files = os.listdir("photos/")
+    for x in range(0, len(files)):
+        zipObj.write("photos/" +files[x], "photos\\"+files[x])
+
     Html_file.close()
     zipObj.close()
     
@@ -53,8 +59,8 @@ def create_header_lines():
                 The intended purpose of this bot was host a monthly CSS competition through twitter by providing pseudorandom
                 generated HTML files. The HTML file is not to be edited and only the CSS file (style.css) is to be submitted.
             </p>
-            <a href="https://www.tacobell.com/">Visit The Offical TacoBell Website </a>
-            <a href="deadTwitterBot.zip" download>Download the HTML & Image Files</a>
+            <a href="https://www.dead.net/">Visit The Offical Grateful Dead Website </a>
+            <a href="deadTwitterBot.zip" download>Download the HTML, CSS, and Image Files</a>
             <a href="https://www.cs.cmu.edu/~mleone/dead-lyrics.html"> Images and Content Sources</a>
             <a href="http://www.csszengarden.com/">This bot was inspired by CSS Zen Garden</a>
             <a href="https://github.com/happlb/htmlGenerator">View my GitHub for this Project </a>
@@ -123,7 +129,6 @@ def getImg_src():
     files = os.listdir(path)
     index = random.randrange(0, len(files))
     path +=files[index]
-    zipObj.write(path, "photos\\"+files[index], zipfile.ZIP_DEFLATED )
     return path
 
 def create_p():
