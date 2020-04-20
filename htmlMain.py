@@ -1,9 +1,11 @@
 import random 
 import os
+import zipfile
+from zipfile import ZipFile
 
 usedImgs = [] 
 num_lines = sum(1 for line in open('deadsongs.txt'))
-
+zipObj = ZipFile('deadTwitterBot.zip', 'w')
 
 def main():
     """
@@ -11,13 +13,17 @@ def main():
     :return: none
     :author: Lucy Happ
     """
+    
     #clear old images 
-   
-
+    #filelist = [ f for f in os.listdir(mydir) if f.endswith(".jpg") ]
+    #for f in filelist:
+     #   os.remove(os.path.join(mydir, f))
+    #delete_from_zip_file('deadTwitterBot.zip', pattern='.*.jpg') 
     Html_file= open("myTest.html","w+")
     Html_file.write(create_header_lines() + create_body_lines() + create_footer_lines())
+    zipObj.write("myTest.html")
     Html_file.close()
-
+    zipObj.close()
     
 
 def create_header_lines():
@@ -48,7 +54,7 @@ def create_header_lines():
                 generated HTML files. The HTML file is not to be edited and only the CSS file (style.css) is to be submitted.
             </p>
             <a href="https://www.tacobell.com/">Visit The Offical TacoBell Website </a>
-            <a href="myTest.HTML" download>Download the HTML & Image Files</a>
+            <a href="deadTwitterBot.zip" download>Download the HTML & Image Files</a>
             <a href="https://www.cs.cmu.edu/~mleone/dead-lyrics.html"> Images and Content Sources</a>
             <a href="http://www.csszengarden.com/">This bot was inspired by CSS Zen Garden</a>
             <a href="https://github.com/happlb/htmlGenerator">View my GitHub for this Project </a>
@@ -117,6 +123,7 @@ def getImg_src():
     files = os.listdir(path)
     index = random.randrange(0, len(files))
     path +=files[index]
+    zipObj.write(path, "photos\\"+files[index], zipfile.ZIP_DEFLATED )
     return path
 
 def create_p():
