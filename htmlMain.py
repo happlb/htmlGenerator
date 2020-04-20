@@ -53,17 +53,17 @@ def create_header_lines():
                 Welcome To My Grateful Dead HTML Generating TwitterBot!
             </h1>
             <p>
-                This bot was made both as a personal project to familiarize myself with the twitter api
+                This bot was made both as a personal project to familiarize myself with the Twitter api
                 and out of a deep irrational love for Grateful Dead. I'm a cat mom, deadhead, Taco Bell enthusiast, and a computer engineer.
                 This project was developed using python with the tweepy library  and using tools such as Git and Visual Studio.
                 The intended purpose of this bot was host a monthly CSS competition through twitter by providing pseudorandom
                 generated HTML files. The HTML file is not to be edited and only the CSS file (style.css) is to be submitted.
             </p>
-            <a href="https://www.dead.net/">Visit The Offical Grateful Dead Website </a>
+            <a href="https://www.dead.net/">Visit The Offical Grateful Dead Website</a>
             <a href="deadTwitterBot.zip" download>Download the HTML, CSS, and Image Files</a>
             <a href="https://www.cs.cmu.edu/~mleone/dead-lyrics.html"> Images and Content Sources</a>
             <a href="http://www.csszengarden.com/">This bot was inspired by CSS Zen Garden</a>
-            <a href="https://github.com/happlb/htmlGenerator">View my GitHub for this Project </a>
+            <a href="https://github.com/happlb/htmlGenerator">View my GitHub for this Project</a>
             <a href="https://www.linkedin.com/in/lucy-happ-647684153">View my Linkdien</a>
             <a href="https://happlb.github.io/personal-portfolio-v1.1/index">View My Personal Webpage</a>
         </div>
@@ -73,7 +73,7 @@ def create_header_lines():
 
 def create_body_lines():
     body = """"""
-    numOfDivs = random.randint(1, 20)
+    numOfDivs = random.randint(5, 20)
     for x in range(0, numOfDivs):
         body+= create_div(x) 
     return body
@@ -194,7 +194,7 @@ def create_ol():
 
 def create_li():
     listItem=""
-    numOfLi = random.randint(1, 20)
+    numOfLi = random.randint(2, 20)
     for x in range(0, numOfLi):
         listItem += """
                <li>""" + create_content() + """</li>"""
